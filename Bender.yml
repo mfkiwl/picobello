@@ -9,7 +9,7 @@ package:
 
 dependencies:
   register_interface: { git: "https://github.com/pulp-platform/register_interface.git", version: "0.4.5" }
-  axi: { git: "https://github.com/pulp-platform/axi.git", version: "0.39.6" }
+  axi: { git: "https://github.com/pulp-platform/axi.git", rev: "fischeti/axi-dw-downsizer-fix-wide-indices" }
   common_cells: { git: "https://github.com/pulp-platform/common_cells.git", version: "1.37.0" }
   cheshire: { git: "https://github.com/pulp-platform/cheshire.git", version: "0.2.0" }
   floo_noc: { git: "https://github.com/pulp-platform/FlooNoC.git", rev: "main"}

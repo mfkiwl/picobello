@@ -98,6 +98,7 @@ TB_DUT = tb_picobello_top
 CHS_BINARY ?= $(CHS_ROOT)/sw/tests/helloworld.spm.elf
 
 include $(PICOBELLO_ROOT)/target/sim/vsim/vsim.mk
+include $(PICOBELLO_ROOT)/target/sim/verilator/verilator.mk
 
 ########
 # Misc #
