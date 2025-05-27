@@ -94,7 +94,7 @@ floo-clean:
 ###################
 
 PD_REMOTE ?= git@iis-git.ee.ethz.ch:picobello/picobello-pd.git
-PD_COMMIT ?= 1f60bc7569ec29e05ba996f7d7664476ac6771e2
+PD_COMMIT ?= 62dd6a03eb0dd5bfd4a0516296e900a97eea89ab
 PD_DIR = $(PB_ROOT)/pd
 SPU_REMOTE ?= git@iis-git.ee.ethz.ch:picobello/fhg_spu_cluster.git
 SPU_COMMIT ?= 180ceb07387e603e577c1057f702f281e8ba55b6
