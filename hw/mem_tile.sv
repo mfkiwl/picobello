@@ -267,6 +267,8 @@ module mem_tile
   mgr_obi_rsp_t obi_rsp;
   sbr_obi_req_t mem_obi_req;
   sbr_obi_rsp_t mem_obi_rsp;
+  sbr_obi_req_t mem_cut_obi_req;
+  sbr_obi_rsp_t mem_cut_obi_rsp;
 
   if (AxiUserAtop) begin : gen_user_atop
     assign obi_in_write_aid = axi_in_aw_user[AxiUserAtopMsb-1:AxiUserAtopLsb];
@@ -357,8 +359,8 @@ module mem_tile
     .sbr_port_obi_rsp_t       (mgr_obi_rsp_t),
     .mgr_port_obi_req_t       (sbr_obi_req_t),
     .mgr_port_obi_rsp_t       (sbr_obi_rsp_t),
-    .mgr_port_obi_a_optional_t(mgr_obi_a_optional_t),
-    .mgr_port_obi_r_optional_t(mgr_obi_r_optional_t),
+    .mgr_port_obi_a_optional_t(sbr_obi_a_optional_t),
+    .mgr_port_obi_r_optional_t(sbr_obi_r_optional_t),
     .LrScEnable               (1'b1),
     .RegisterAmo              (1'b0),
     .RiscvWordWidth           (32)
@@ -372,6 +374,21 @@ module mem_tile
     .mgr_port_rsp_i(mem_obi_rsp)
   );
 
+  obi_cut #(
+    .ObiCfg,
+    .obi_a_chan_t(sbr_obi_a_chan_t),
+    .obi_r_chan_t(sbr_obi_r_chan_t),
+    .obi_req_t   (sbr_obi_req_t),
+    .obi_rsp_t   (sbr_obi_rsp_t)
+  ) i_obi_cut (
+    .clk_i,
+    .rst_ni,
+    .sbr_port_req_i(mem_obi_req),
+    .sbr_port_rsp_o(mem_obi_rsp),
+    .mgr_port_req_o(mem_cut_obi_req),
+    .mgr_port_rsp_i(mem_cut_obi_rsp)
+  );
+
   obi_sram_shim #(
     .ObiCfg   (SbrObiCfg),
     .obi_req_t(sbr_obi_req_t),
@@ -379,8 +396,8 @@ module mem_tile
   ) i_sram_shim_bank (
     .clk_i,
     .rst_ni,
-    .obi_req_i(mem_obi_req),
-    .obi_rsp_o(mem_obi_rsp),
+    .obi_req_i(mem_cut_obi_req),
+    .obi_rsp_o(mem_cut_obi_rsp),
     .req_o    (mem_req),
     .we_o     (mem_we),
     .addr_o   (mem_addr),
