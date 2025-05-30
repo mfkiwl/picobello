@@ -290,10 +290,10 @@ package picobello_pkg;
   function automatic sam_multicast_rule_t [SamNumRules-1:0] get_sam_multicast();
     sam_multicast_rule_t [SamNumRules-1:0] sam_multicast;
 
-    int unsigned tileSize;
-    int unsigned len_id_x, len_id_y;
-    int unsigned offset_id_x, offset_id_y;
-    int unsigned empty_cols, empty_rows;
+    int unsigned                           tileSize;
+    int unsigned                           len_id_x, len_id_y;
+    int unsigned                           offset_id_x, offset_id_y;
+    int unsigned                           empty_cols, empty_rows;
 
     // Evaluate where the X and Y node coordinate associated with the multicast endpoints
     // are actaully located
