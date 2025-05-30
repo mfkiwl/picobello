@@ -270,7 +270,7 @@ packages:
     - common_cells
     - register_interface
   snitch_cluster:
-    revision: e1740c219339938a79c12e601f5ca161ad22638d
+    revision: af92c0f6a7fba00fb3995a34213f6ac461126522
     version: null
     source:
       Git: https://github.com/Lore0599/snitch_cluster.git
